@@ -1,24 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-    const Users = sequelize.define('users', {
+    const Picks = sequelize.define('picks', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false
         },
-        username: {
-            type: DataTypes.STRING,
-            required: true,
-            unique: true
+        user_id: {
+            type: DataTypes.UUID,
+            allowNull: false
         },
-        password: {
+        team: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        role: {
-            type: DataTypes.ENUM,
-            values: ['user', 'admin', 'disabled']
+        over_under: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
+    }, {
+        underscored: true
     })
-    return Users;
-}
+};
+return Picks;
